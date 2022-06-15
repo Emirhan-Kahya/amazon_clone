@@ -14,10 +14,12 @@ void httpErrorHandler({
       onSuccess();
       break;
     case 400:
-      showSnackBar(context, jsonDecode(response.body)['msg']);
+      showSnackBar(context, "Error occurred try to sign up again in a few minutes !");
+      print(jsonDecode(response.body)['msg']);
       break;
     case 500:
-      showSnackBar(context, jsonDecode(response.body)['error']);
+      showSnackBar(context, "Check your informations you filled or try again later !");
+      print(jsonDecode(response.body)['error']);
       break;
     default:
       showSnackBar(context, response.body);

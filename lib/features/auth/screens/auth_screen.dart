@@ -66,13 +66,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 //seperate line
                 Container(
                   margin:
-                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   height: 1,
                   color: Colors.black,
                 ),
                 ListTile(
                   tileColor:
-                  _auth == Auth.signup ? mVariables.backgroundColor : null,
+                      _auth == Auth.signup ? mVariables.backgroundColor : null,
                   title: const Text(
                     'Create An Account?',
                     style: TextStyle(
@@ -105,26 +105,33 @@ class _AuthScreenState extends State<AuthScreen> {
                           CustomTextFieldText(text: 'Name'),
                           SizedBox(height: 4),
                           CustomTextField(
-                              hintText: 'Name', controller: _nameController),
+                            hintText: 'Name',
+                            text: 'Name',
+                            controller: _nameController,
+                          ),
                           SizedBox(height: 10),
                           CustomTextFieldText(text: 'Email'),
                           SizedBox(height: 4),
                           CustomTextField(
-                              hintText: 'example@mail.com',
-                              controller: _emailController),
+                            hintText: 'example@mail.com',
+                            text: 'Email',
+                            controller: _emailController,
+                          ),
                           SizedBox(height: 10),
                           CustomTextFieldText(text: 'Password'),
                           SizedBox(height: 4),
                           CustomTextField(
                               hintText: '********',
+                              text: 'Password',
                               controller: _passwordController),
                           SizedBox(height: 10),
                           CustomButton(
                             text: 'Sign Up',
                             press: () {
-                              if (_signInFormKey.currentState!.validate()) {
+                              if (_signUpFormKey.currentState!.validate()) {
                                 signUpUser();
                               }
+                              return null;
                             },
                           ),
                         ],
@@ -133,7 +140,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ListTile(
                   tileColor:
-                  _auth == Auth.signin ? mVariables.backgroundColor : null,
+                      _auth == Auth.signin ? mVariables.backgroundColor : null,
                   title: const Text(
                     'Have An Account Already?',
                     style: TextStyle(
