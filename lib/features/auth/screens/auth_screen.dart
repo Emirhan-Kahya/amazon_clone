@@ -131,7 +131,7 @@ class _AuthScreenState extends State<AuthScreen> {
                               if (_signUpFormKey.currentState!.validate()) {
                                 signUpUser();
                               }
-                              return null;
+                              return;
                             },
                           ),
                         ],
