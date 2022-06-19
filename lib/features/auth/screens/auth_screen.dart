@@ -18,6 +18,7 @@ class AuthScreen extends StatefulWidget {
   State<AuthScreen> createState() => _AuthScreenState();
 }
 
+
 class _AuthScreenState extends State<AuthScreen> {
   final AuthService authService = AuthService();
   Auth _auth = Auth.signup;
@@ -46,6 +47,14 @@ class _AuthScreenState extends State<AuthScreen> {
     );
   }
 
+  void signInUser() {
+    authService.signInUser(
+      context: context,
+      email: _emailController.text,
+      password: _passwordController.text,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -66,13 +75,13 @@ class _AuthScreenState extends State<AuthScreen> {
                 //seperate line
                 Container(
                   margin:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                  const EdgeInsets.symmetric(vertical: 10, horizontal: 20),
                   height: 1,
                   color: Colors.black,
                 ),
                 ListTile(
                   tileColor:
-                      _auth == Auth.signup ? mVariables.backgroundColor : null,
+                  _auth == Auth.signup ? mVariables.backgroundColor : null,
                   title: const Text(
                     'Create An Account?',
                     style: TextStyle(
@@ -140,7 +149,7 @@ class _AuthScreenState extends State<AuthScreen> {
                   ),
                 ListTile(
                   tileColor:
-                      _auth == Auth.signin ? mVariables.backgroundColor : null,
+                  _auth == Auth.signin ? mVariables.backgroundColor : null,
                   title: const Text(
                     'Have An Account Already?',
                     style: TextStyle(
@@ -166,7 +175,7 @@ class _AuthScreenState extends State<AuthScreen> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     child: Form(
-                      key: _signUpFormKey,
+                      key: _signInFormKey,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -182,7 +191,15 @@ class _AuthScreenState extends State<AuthScreen> {
                               hintText: '********',
                               controller: _passwordController),
                           SizedBox(height: 10),
-                          CustomButton(text: 'Sign In', press: () {}),
+                          CustomButton(
+                            text: 'Sign In',
+                            press: () {
+                              if (_signInFormKey.currentState!.validate()) {
+                                signInUser();
+                              }
+                              return;
+                            },
+                          ),
                         ],
                       ),
                     ),

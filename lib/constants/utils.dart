@@ -8,7 +8,7 @@ void showSnackBar(BuildContext context, String text, {Color color = Colors.red})
       backgroundColor: color.withOpacity(0.8),
       behavior: SnackBarBehavior.floating,
       margin: EdgeInsets.only(
-          bottom: MediaQuery.of(context).size.height - 150,
+          bottom: 20,
           right: 20,
           left: 20),
       content: Text(text, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),),
