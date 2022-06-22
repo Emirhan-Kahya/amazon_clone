@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+
+import 'package:amazon_clone/common/widgets/custom_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
@@ -10,7 +12,6 @@ import '../../constants/global_variables.dart';
 import '../../constants/utils.dart';
 import '../../models/user_model.dart';
 import '../../providers/user_provider.dart';
-import '../home/screens/home_screen.dart';
 
 class AuthService {
   // sign up user
@@ -46,7 +47,6 @@ class AuthService {
           showSnackBar(
             context,
             'Account created! Login with the same credentials!',
-            color: Colors.green
           );
         },
       );
@@ -62,7 +62,6 @@ class AuthService {
     required String password,
   }) async {
     try {
-
       http.Response res = await http.post(
         Uri.parse('$uri/api/signin'),
         body: jsonEncode({
@@ -73,7 +72,6 @@ class AuthService {
           'Content-Type': 'application/json; charset=UTF-8',
         },
       );
-
       httpErrorHandler(
         response: res,
         context: context,
@@ -81,11 +79,10 @@ class AuthService {
           SharedPreferences prefs = await SharedPreferences.getInstance();
           Provider.of<UserProvider>(context, listen: false).setUser(res.body);
           await prefs.setString('x-auth-token', jsonDecode(res.body)['token']);
-
           Navigator.pushNamedAndRemoveUntil(
             context,
-            HomeScreen.routeName,
-            (route) => false,
+            mBottomBar.routeName,
+                (route) => false,
           );
         },
       );
@@ -96,11 +93,12 @@ class AuthService {
 
   // get user data
   void getUserData(
-    BuildContext context,
-  ) async {
+      BuildContext context,
+      ) async {
     try {
       SharedPreferences prefs = await SharedPreferences.getInstance();
       String? token = prefs.getString('x-auth-token');
+
       if (token == null) {
         prefs.setString('x-auth-token', '');
       }
