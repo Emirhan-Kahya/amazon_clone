@@ -1,4 +1,5 @@
 import 'package:amazon_clone/constants/global_variables.dart';
+import 'package:amazon_clone/features/admin/screens/analytics_screen.dart';
 import 'package:amazon_clone/features/admin/screens/posts_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,7 +19,7 @@ class _AdminScreenState extends State<AdminScreen> {
 
   List<Widget> pages = [
     const PostsScreen(),
-    const Center(child: Text('Analytics Page'),),
+    const AnalyticScreen(),
     const Center(child: Text('Shopping Cart'),),  ];
 
   void updatePage(int page){
@@ -63,6 +64,7 @@ class _AdminScreenState extends State<AdminScreen> {
           ),
         ),
       ),
+      body: pages[_pageIndex],
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _pageIndex,
         selectedItemColor: mVariables.selectedNavBarColor,

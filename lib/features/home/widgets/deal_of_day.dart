@@ -42,14 +42,47 @@ class _DealOfDayState extends State<DealOfDay> {
             overflow: TextOverflow.ellipsis,
           ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Image.network('https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg', fit: BoxFit.fitWidth, width: 100, height: 100,),
-            Image.network('https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg', fit: BoxFit.fitWidth, width: 100, height: 100,),
-            Image.network('https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg', fit: BoxFit.fitWidth, width: 100, height: 100,),
-            Image.network('https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg', fit: BoxFit.fitWidth, width: 100, height: 100,),
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Image.network(
+                'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
+                fit: BoxFit.fitWidth,
+                width: 100,
+                height: 100,
+              ),
+              Image.network(
+                'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
+                fit: BoxFit.fitWidth,
+                width: 100,
+                height: 100,
+              ),
+              Image.network(
+                'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
+                fit: BoxFit.fitWidth,
+                width: 100,
+                height: 100,
+              ),
+              Image.network(
+                'https://images-eu.ssl-images-amazon.com/images/G/31/img2021/Vday/bwl/English.jpg',
+                fit: BoxFit.fitWidth,
+                width: 100,
+                height: 100,
+              ),
+            ],
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(vertical: 15).copyWith(left: 15),
+          alignment: Alignment.topLeft,
+          child: Text(
+            'See all deals',
+            style: TextStyle(
+              color: Colors.cyan[800],
+            ),
+          ),
         ),
       ],
     );
