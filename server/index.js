@@ -4,12 +4,13 @@ const mongoose = require('mongoose');
 //IMPORT FROM OTHER FILES
 const authRouter = require('./routes/auth');
 const adminRouter = require('./routes/admin');
-const adminRouter = require('./routes/product');
+const productRouter = require("./routes/product");
 
 //INIT
 const PORT = 3000;
 const app = express();
 const DB = "mongodb+srv://emirhan:eKahya22@cluster0.gtbp8.mongodb.net/?retryWrites=true&w=majority";
+
 //Middleware
 app.use(express.json());
 app.use(authRouter);

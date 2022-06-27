@@ -1,12 +1,16 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 class SearchField extends StatelessWidget {
   final VoidCallback press;
-  const SearchField({Key? key, required this.press}) : super(key: key);
+  final Function(String) onFieldSubmitted;
+  const SearchField({Key? key, required this.press, required this.onFieldSubmitted}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         filled: true,
         fillColor: Colors.white,
