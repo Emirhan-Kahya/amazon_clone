@@ -2,6 +2,7 @@ import 'package:amazon_clone/common/widgets/loader.dart';
 import 'package:amazon_clone/constants/global_variables.dart';
 import 'package:amazon_clone/features/home/widgets/address_box.dart';
 import 'package:amazon_clone/features/search/services/search_services.dart';
+import 'package:amazon_clone/features/search/widget/searched_product.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/product_model.dart';
@@ -86,13 +87,19 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
       ),
-      body: products == null ? const Loader() : Center(
-        child: Column(
-          children: [
+      body: products == null ? const Loader() : Column(
+        children: [
             const AddressBox(),
             const SizedBox(height: 10),
-          ],
-        ),
+            Expanded(
+            child: ListView.builder(
+              itemCount: products!.length,
+              itemBuilder: (context, index){
+                return SearchedProduct(product: products![index],);
+              },
+            ),
+          ),
+        ],
       ),
     );
   }
