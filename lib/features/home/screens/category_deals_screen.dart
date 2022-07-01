@@ -85,7 +85,6 @@ class _CategoryDealScreenState extends State<CategoryDealScreen> {
                       itemBuilder: (context, index) {
                         final product = productsList![index];
                         return GestureDetector(
-
                           onTap: (){
                             Navigator.pushNamed(context, ProductDetailScreen.routeName, arguments: product);
                           },

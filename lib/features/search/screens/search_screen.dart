@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 
 import '../../../models/product_model.dart';
 import '../../home/widgets/search_field.dart';
+import '../../product_detail/screens/product_detail_screen.dart';
 
 class SearchScreen extends StatefulWidget {
   static const String routeName = '/search-screen';
@@ -35,12 +36,11 @@ class _SearchScreenState extends State<SearchScreen> {
       context: context,
       searchQuery: widget.searchQuery,
     );
-    setState((){});
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-
     void navigateToSearchScreen(String query) {
       Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
     }
@@ -87,20 +87,31 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
         ),
       ),
-      body: products == null ? const Loader() : Column(
-        children: [
-            const AddressBox(),
-            const SizedBox(height: 10),
-            Expanded(
-            child: ListView.builder(
-              itemCount: products!.length,
-              itemBuilder: (context, index){
-                return SearchedProduct(product: products![index],);
-              },
+      body: products == null
+          ? const Loader()
+          : Column(
+              children: [
+                const AddressBox(),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ListView.builder(
+                    itemCount: products!.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Navigator.pushNamed(
+                              context, ProductDetailScreen.routeName,
+                              arguments: products![index]);
+                        },
+                        child: SearchedProduct(
+                          product: products![index],
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ],
             ),
-          ),
-        ],
-      ),
     );
   }
 }

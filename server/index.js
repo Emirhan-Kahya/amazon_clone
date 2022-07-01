@@ -1,10 +1,11 @@
-//IMPORT FROM PACKAGE
-const express = require('express');
-const mongoose = require('mongoose');
-//IMPORT FROM OTHER FILES
-const authRouter = require('./routes/auth');
-const adminRouter = require('./routes/admin');
+// IMPORTS FROM PACKAGES
+const express = require("express");
+const mongoose = require("mongoose");
+const adminRouter = require("./routes/admin");
+// IMPORTS FROM OTHER FILES
+const authRouter = require("./routes/auth");
 const productRouter = require("./routes/product");
+
 
 //INIT
 const PORT = 3000;
