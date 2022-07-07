@@ -32,8 +32,7 @@ class _OrderDetailsState extends State<OrderDetails> {
   @override
   void initState() {
     super.initState();
-    currentStep = widget.order.status!;
-  }
+    currentStep = widget.order.status;  }
 
   //For admin
   void changeOrderStatus(int status) {
