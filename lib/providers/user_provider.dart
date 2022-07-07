@@ -10,6 +10,7 @@ class UserProvider extends ChangeNotifier {
     address: '',
     type: '',
     token: '',
+    cart: [],
   );
 
   UserModel get user => _userModel;
@@ -19,7 +20,7 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  void setUserFromModel(UserModel user) {
+  void setUserFromModel(UserModel user){
     _userModel = user;
     notifyListeners();
   }

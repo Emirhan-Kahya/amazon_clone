@@ -2,7 +2,6 @@ import 'package:amazon_clone/common/widgets/stars.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/product_model.dart';
-import '../../product_detail/screens/product_detail_screen.dart';
 
 class SearchedProduct extends StatelessWidget {
   final Product product;

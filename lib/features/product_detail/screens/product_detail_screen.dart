@@ -32,6 +32,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
     Navigator.pushNamed(context, SearchScreen.routeName, arguments: query);
   }
 
+  void addToCart(){
+    productDetailServices.addToCart(context: context, product: widget.product);
+  }
+
+
   @override
   void initState() {
     super.initState();
@@ -48,6 +53,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
       avgRate = totalRating / widget.product.rating!.length;
     }
   }
+
 
 
 
@@ -177,7 +183,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
               padding: const EdgeInsets.all(10.0),
               child: CustomButton(
                 text: 'Add to Cart',
-                press: () {},
+                press: addToCart,
                 color: const Color.fromRGBO(254, 216, 19, 1),
               ),
             ),
